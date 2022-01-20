@@ -12,6 +12,8 @@ Where the key is the external port to use and the value indicates the service to
 
 [Ref#2](https://stackoverflow.com/questions/61430311/exposing-multiple-tcp-udp-services-using-a-single-loadbalancer-on-k8s/61461960#61461960)          
 
+- Modify Ingress Setup
+        
 ```
 kubectl create configmap tcp-services -n kube-router
 kubectl create configmap udp-services -n kube-router
@@ -55,9 +57,21 @@ kubectl get svc -n kube-router ingress-nginx-controller
 kubectl get deployments -n kube-router ingress-nginx-controller
 ```
 
+- Install Kuma Tools as root
+        
+```
+curl -L https://kuma.io/installer.sh | sh -
+cd kuma-1.2.3/bin
+ln -s /root/kuma-1.2.3/bin/kumactl /usr/local/bin/kumactl
+```        
+        
 - Install Kuma in Central Cluster (Global Zone) 
 
-```kumactl install control-plane --mode=global | kubectl apply -f -```
+```
+kumactl install control-plane --mode=global | kubectl apply -f -
+kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
+kubectl get pod -n kuma-system
+```
 
 - Create Ingress for kuma 
 
@@ -107,4 +121,8 @@ EOF
 
 - Install Kuma in Remote Cluster (Zone)
 
-```kumactl install control-plane --mode=zone --zone=prod --ingress-enabled --kds-global-address grpcs://kuma.172.25.80.139.nip.io:5685 | kubectl apply -f -```
+```
+kumactl install control-plane --mode=zone --zone=prod --ingress-enabled --kds-global-address grpcs://kuma.172.25.80.139.nip.io:5685 | kubectl apply -f -
+kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
+kubectl get pod -n kuma-system
+```
