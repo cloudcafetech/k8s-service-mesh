@@ -61,8 +61,8 @@ kubectl get deployments -n kube-router ingress-nginx-controller
         
 ```
 curl -L https://kuma.io/installer.sh | sh -
-cd kuma-1.2.3/bin
-ln -s /root/kuma-1.2.3/bin/kumactl /usr/local/bin/kumactl
+cd kuma-1.4.1/bin
+ln -s /root/kuma-1.4.1/bin/kumactl /usr/local/bin/kumactl
 ```        
         
 - Install Kuma in Central Cluster (Global Zone) 
