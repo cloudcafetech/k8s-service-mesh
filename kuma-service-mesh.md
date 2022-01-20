@@ -30,7 +30,7 @@ Edit ingress-nginx-controller deployment
         - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
 ```
 
-and add following in port sections
+and add following in ```port``` sections
 
 ```
         - containerPort: 5685                                                                                                     
