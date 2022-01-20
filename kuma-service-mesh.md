@@ -7,6 +7,10 @@ Kuma is a platform agnostic open-source control plane for service mesh and micro
 Kuma global zone sync (kuma-global-zone-sync) service works in Layer 4 and ingress does not support TCP or UDP services.
 To make it work we have to use the flags --tcp-services-configmap and --udp-services-configmap in ingress controller to point to an existing config map.
 Where the key is the external port to use and the value indicates the service to expose using the format: <namespace/service name>:<service port>:[PROXY]:[PROXY].
+        
+[Ref#1](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/)  
+
+[Ref#2](https://stackoverflow.com/questions/61430311/exposing-multiple-tcp-udp-services-using-a-single-loadbalancer-on-k8s/61461960#61461960)          
 
 ```
 kubectl create configmap tcp-services -n kube-router
