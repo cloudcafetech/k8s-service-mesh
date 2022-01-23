@@ -104,7 +104,7 @@ spec:
       network: network1
 EOF
   
-istioctl install --context="${CTX_CLUSTER1}" -f cluster1.yaml
+istioctl install --context="${CTX_CLUSTER1}" -y -f cluster1.yaml
 ```
   
 - Install the east-west gateway in cluster1
@@ -130,7 +130,7 @@ spec:
       network: network2
 EOF
   
-istioctl install --context="${CTX_CLUSTER1}" -f cluster2.yaml
+istioctl install --context="${CTX_CLUSTER1}" -y -f cluster2.yaml
 ```
   
 - Install the east-west gateway in cluster2
