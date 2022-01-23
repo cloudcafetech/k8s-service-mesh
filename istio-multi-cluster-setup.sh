@@ -82,7 +82,7 @@ spec:
       network: $ctx-network
 EOF
  
-  istioctl install --context=$ctx -f multi-cluster/$ctx-cluster.yaml
+  istioctl install --context=$ctx -y -f multi-cluster/$ctx-cluster.yaml
 
   echo -e "-------------\n"
   echo -e "Install the $ENV1-$ENV2 gateway in $ctx-cluster .........\n"
@@ -117,12 +117,36 @@ EOF
 # Setup Monitoring on Multiple Clusters
 setupmon() {
 
-  export KUBECONFIG=~/merge-config
-  for ctx in $ENV1 $ENV2; do
-    echo -e "Install Prometheus & Kiali in $ctx .........\n"
-    kubectl apply -f ~/istio-$ISTIO_VER/samples/addons/prometheus.yaml --context $ctx
-    kubectl apply -f ~/istio-$ISTIO_VER/samples/addons/kiali.yaml --context $ctx
-    echo -e "-------------\n"
+ export KUBECONFIG=~/merge-config
+ for ctx in $ENV1 $ENV2; do
+cat <<EOF > kiali-ing-$ctx.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  namespace: istio-system
+  name: kiali
+spec:
+  rules:
+  - host: $KIALI_HOST
+    http:
+      paths:
+      - backend:
+          service:
+            name: kiali
+            port:
+              number: 20001
+        path: /
+        pathType: Prefix
+EOF
+
+  echo -e "Install Prometheus & Kiali in $ctx .........\n"
+  kubectl apply -f ~/istio-$ISTIO_VER/samples/addons/prometheus.yaml --context $ctx
+  kubectl apply -f ~/istio-$ISTIO_VER/samples/addons/kiali.yaml --context $ctx
+  kubectl apply -f kiali-ing-$ctx.yaml --context $ctx  
+  echo -e "-------------\n"
+
   done
 
 }
