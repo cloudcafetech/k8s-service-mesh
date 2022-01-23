@@ -159,7 +159,7 @@ kubectl apply -f - --context="${CTX_CLUSTER1}"
 ### Verify the mesh service discovery and cross-cluster traffic
  
 [Istio - verify installation](https://istio.io/latest/docs/setup/install/multicluster/verify/)  
-[Istio - Triubleshooting Multicluster](https://istio.io/latest/docs/ops/diagnostic-tools/multicluster/)  
+[Istio - Troubleshooting Multicluster](https://istio.io/latest/docs/ops/diagnostic-tools/multicluster/)  
 
 - Create the *sample* namespace, *helloworld* service and *sleep* deployment in both clusters
 
