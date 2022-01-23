@@ -171,18 +171,18 @@ case "$1" in
     'istiosetup')
             istiosetup
             ;;
-    'setupall')
-            setupall
-            ;;
     'setupmon')
             setupmon
+            ;;
+    'setupall')
+            setupall
             ;;
     'uninstallistio')
             uninstallistio
             ;;
     *)
             echo
-            echo "$bld$grn Usage: $0 { toolistio | mergeconfig | createcerts | istiosetup | setupall | setupmon | uninstallistio } $nor"
+            echo "$bld$grn Usage: $0 { toolistio | mergeconfig | createcerts | istiosetup | setupmon | setupall | uninstallistio } $nor"
             echo
             exit 1
             ;;
