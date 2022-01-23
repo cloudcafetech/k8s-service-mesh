@@ -4,11 +4,13 @@
 ISTIO_VER=1.10.1
 
 # Kubeconfig file location (absolute path)
-CLUSTER1_PATH=
-CLUSTER2_PATH=
+CLUSTER1_PATH=~/dev-config
+CLUSTER2_PATH=~/stage-config
 
 ENV1=dev
 ENV2=stage
+
+KIALI_HOST=kiali.172.25.80.139.nip.io
 
 red=$(tput setaf 1)
 grn=$(tput setaf 2)
