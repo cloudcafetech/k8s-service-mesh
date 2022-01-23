@@ -156,6 +156,23 @@ istioctl x create-remote-secret \
 kubectl apply -f - --context="${CTX_CLUSTER1}"
 ```
 
+### Observibility the Multi Custer Service Mesh
+
+- Kiali setup
+
+```kubectl apply -f $PWD/istio-1.10.1/samples/addons/kiali.yaml```
+
+- Prometheus & Grafana setup
+
+```
+kubectl apply -f $PWD/istio-1.10.1/samples/addons/prometheus.yaml
+kubectl apply -f $PWD/istio-1.10.1/samples/addons/grafana.yaml
+```
+
+- Jaeger setup
+
+```kubectl apply -f $PWD/istio-1.10.1/samples/addons/jaeger.yaml```
+
 ### Verify the mesh service discovery and cross-cluster traffic
  
 [Istio - verify installation](https://istio.io/latest/docs/setup/install/multicluster/verify/)  
