@@ -253,6 +253,6 @@ kubectl --context admin@cluster1 get service --namespace istio-system
 istioctl --context admin@cluster2 pc ep sleep-557747455f-jznfb.sample --cluster="outbound|5000||helloworld.sample.svc.cluster.local"
 ```
 
-[Ref#1]9https://blog.yugabyte.com/multi-region-yugabytedb-deployments-on-kubernetes-with-istio/0)
+[Ref#1](https://blog.yugabyte.com/multi-region-yugabytedb-deployments-on-kubernetes-with-istio/0)
 
 [Ref#2](https://github.com/cloudcafetech/setup-istio-multi-primary-diff-network/edit/main/README.md)
