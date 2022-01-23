@@ -3,6 +3,7 @@
 
 ISTIO_VER=1.10.1
 
+# Kubeconfig file location (absolute path)
 CLUSTER1_PATH=
 CLUSTER2_PATH=
 
