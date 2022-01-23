@@ -32,7 +32,7 @@ export CTX_CLUSTER2=$(kubectl config view -o jsonpath='{.contexts[1].name}')
 echo CTX_CLUSTER1 = ${CTX_CLUSTER1}, CTX_CLUSTER2 = ${CTX_CLUSTER2}
 ```
 
-### Create common Root CA and intermediate CA for cluster1/2 [Istio - Plug in CA Certificates]9(https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/)
+### Create common Root CA and intermediate CA for cluster1/2 [Istio - Plug in CA Certificates](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/)
 
 A Root CA: As Istio requires an mTLS connection between services running on separate clusters, you need to use a shared Root CA to generate intermediate CA certs for both clusters. That establishes trust between microservices running on different clusters as the intermediate certs share the same Root CA.
 
