@@ -116,6 +116,7 @@ EOF
 # Setup Monitoring on Multiple Clusters
 setupmon() {
 
+  export KUBECONFIG=~/merge-config
   for ctx in $ENV1 $ENV2; do
     echo -e "Install Prometheus & Kiali in $ctx .........\n"
     kubectl apply -f ~/istio-$ISTIO_VER/samples/addons/prometheus.yaml --context $ctx
@@ -139,6 +140,7 @@ setupall() {
 # Uninstall Istio From All Clusters
 uninstallistio() {
 
+ export KUBECONFIG=~/merge-config
  for ctx in $ENV1 $ENV2; do
 
   echo -e "Removing Istio from $ctx .........\n"
