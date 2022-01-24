@@ -144,15 +144,8 @@ istioctl install --context="${CTX_CLUSTER1}" -y -f cluster2.yaml
 - Enable Endpoint Discovery
 
 ```
-istioctl x create-remote-secret \
-  --context="${CTX_CLUSTER1}" \
-  --name=cluster1 | \
-kubectl apply -f - --context="${CTX_CLUSTER2}"
-
-istioctl x create-remote-secret \
-  --context="${CTX_CLUSTER2}" \
-  --name=cluster2 | \
-kubectl apply -f - --context="${CTX_CLUSTER1}"
+istioctl x create-remote-secret --context="${CTX_CLUSTER1}" --name=cluster1 | kubectl apply -f - --context="${CTX_CLUSTER2}"
+istioctl x create-remote-secret --context="${CTX_CLUSTER2}" --name=cluster2 | kubectl apply -f - --context="${CTX_CLUSTER1}"
 ```
 
 ### Observibility the Multi Custer Service Mesh
