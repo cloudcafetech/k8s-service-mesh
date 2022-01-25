@@ -152,6 +152,27 @@ istioctl x create-remote-secret --context="${CTX_CLUSTER2}" --name=cluster2 | ku
 
 - Kiali setup
 
+Due to Multi Cluster Visibility [Issue](https://github.com/kiali/kiali/issues/4670#issuecomment-1020709655) , need to modify Kiali yaml then deploy
+
+- Add **Annotation (kiali.io/external-url: Ingress-URL)** in service as below
+
+```
+  annotations:
+    kiali.io/external-url: http://kiali.172.25.80.177.nip.io/
+```
+
+- Add **web_fqdn: kiali-Ingress-Host** & **web_schema: http** in configmap as below
+ 
+ ```
+    server:
+      metrics_enabled: true
+      metrics_port: 9090
+      port: 20001
+      web_fqdn: kiali.172.25.80.177.nip.io
+      web_root: /kiali
+      web_schema: http
+ ```
+
 ```kubectl apply -f $PWD/istio-1.10.1/samples/addons/kiali.yaml```
 
 - Prometheus & Grafana setup
