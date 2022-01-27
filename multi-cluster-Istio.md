@@ -235,6 +235,13 @@ kubectl exec --context="${CTX_CLUSTER2}" -n sample -c sleep \
   -- curl -sS helloworld.sample:5000/hello
 ```
 
+### Troubleshooting
+
+```
+istioctl pc ep "$(kubectl get pod --context="${CTX_CLUSTER1}" -n sample -l app=sleep -o jsonpath='{.items[0].metadata.name}')" -n sample --context="${CTX_CLUSTER1}" 
+istioctl pc ep "$(kubectl get pod --context="${CTX_CLUSTER2}" -n sample -l app=sleep -o jsonpath='{.items[0].metadata.name}')" -n sample --context="${CTX_CLUSTER2}" 
+```
+
 ### Check the istio-proxy sidecar config
 
 ```
