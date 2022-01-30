@@ -95,7 +95,7 @@ data:
          password: "admin"
          username: "admin2675"
         in_cluster_url: "http://grafana-service.monitoring:3000"
-        #url: http://grafana.172.25.80.139.nip.io
+        url: http://grafana-env
       custom_dashboards:
         enabled: true
       istio:
