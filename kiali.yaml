@@ -90,10 +90,17 @@ data:
     external_services:
       prometheus:
         url: http://kubemon-prometheus.monitoring:9090
+      tracing:
+        auth:
+          type: none
+        enabled: true
+        in_cluster_url: 'http://tracing.istio-system/jaeger'
+        url: 'http://jaeger.example.com/'
+        use_grpc: true
       grafana:
         auth:
-         password: "admin"
-         username: "admin2675"
+          password: "admin"
+          username: "admin2675"
         in_cluster_url: "http://grafana-service.monitoring:3000"
         url: http://grafana-env
       custom_dashboards:
