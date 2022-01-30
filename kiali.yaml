@@ -88,6 +88,14 @@ data:
       version_label: v1.45.0
       view_only_mode: false
     external_services:
+      prometheus:
+        url: http://kubemon-prometheus.monitoring:9090
+      grafana:
+        auth:
+         password: "admin"
+         username: "admin2675"
+        in_cluster_url: "http://grafana-service.monitoring:3000"
+        #url: http://grafana.172.25.80.139.nip.io
       custom_dashboards:
         enabled: true
       istio:
