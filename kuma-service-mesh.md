@@ -116,7 +116,7 @@ spec:
               number: 5681
         path: /
         pathType: Prefix
-EOF        
+EOF
 ```
 
 - Install Kuma in Remote Cluster (Dev Zone)
