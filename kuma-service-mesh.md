@@ -86,7 +86,7 @@ metadata:
   namespace: kuma-system
 spec:
   rules:
-  - host: kumagz.172.25.80.139.nip.io
+  - host: kumagz.172.26.32.56.nip.io
     http:
       paths:
       - backend:
@@ -106,7 +106,7 @@ metadata:
   namespace: kuma-system
 spec:
   rules:
-  - host: kumagui.172.25.80.139.nip.io
+  - host: kumagui.172.26.32.56.nip.io
     http:
       paths:
       - backend:
@@ -119,10 +119,18 @@ spec:
 EOF        
 ```
 
-- Install Kuma in Remote Cluster (Zone)
+- Install Kuma in Remote Cluster (Dev Zone)
 
 ```
-kumactl install control-plane --mode=zone --zone=prod --ingress-enabled --kds-global-address grpcs://kuma.172.25.80.139.nip.io:5685 | kubectl apply -f -
+kumactl install control-plane --mode=zone --zone=dev --ingress-enabled --kds-global-address grpcs://kumagz.172.26.32.56.nip.io:5685 | kubectl apply -f -
 kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
 kubectl get pod -n kuma-system
 ```
+        
+- Install Kuma in Remote Cluster (Stage Zone)
+
+```
+kumactl install control-plane --mode=zone --zone=stage --ingress-enabled --kds-global-address grpcs://kumagz.172.26.32.56.nip.io:5685 | kubectl apply -f -
+kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
+kubectl get pod -n kuma-system
+```        
