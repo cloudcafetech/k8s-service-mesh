@@ -117,6 +117,8 @@ spec:
         path: /
         pathType: Prefix
 EOF
+sleep 2
+kubectl create -f kumaing.yaml        
 ```
 
 - Install Kuma in Remote Cluster (Dev Zone)
