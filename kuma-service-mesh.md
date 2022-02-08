@@ -69,7 +69,7 @@ ln -s /root/kuma-1.4.1/bin/kumactl /usr/local/bin/kumactl
 
 ```
 kumactl install control-plane --mode=global | kubectl apply -f -
-kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
+kubectl wait -n kuma-system --timeout=90s --for condition=Ready --all pods
 kubectl get pod -n kuma-system
 ```
 
@@ -123,7 +123,7 @@ EOF
 
 ```
 kumactl install control-plane --mode=zone --zone=dev --ingress-enabled --kds-global-address grpcs://kumagz.172.26.32.56.nip.io:5685 | kubectl apply -f -
-kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
+kubectl wait -n kuma-system --timeout=90s --for condition=Ready --all pods
 kubectl get pod -n kuma-system
 ```
         
@@ -131,6 +131,6 @@ kubectl get pod -n kuma-system
 
 ```
 kumactl install control-plane --mode=zone --zone=stage --ingress-enabled --kds-global-address grpcs://kumagz.172.26.32.56.nip.io:5685 | kubectl apply -f -
-kubectl wait -n kuma-system --timeout=5s --for condition=Ready --all pods
+kubectl wait -n kuma-system --timeout=90s --for condition=Ready --all pods
 kubectl get pod -n kuma-system
 ```        
