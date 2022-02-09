@@ -1,9 +1,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  annotations:
-    kuma.io/mesh: default
-    kuma.io/sidecar-injection: enabled
   labels:
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
@@ -214,7 +211,6 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    ingress.kubernetes.io/service-upstream: "true"
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: ingress-nginx
@@ -269,8 +265,6 @@ spec:
   template:
     metadata:
       annotations:
-        kuma.io/gateway: enabled
-        nginx.ingress.kubernetes.io/service-upstream: "true"
       labels:
         app.kubernetes.io/component: controller
         app.kubernetes.io/instance: ingress-nginx
