@@ -28,7 +28,7 @@ spec:
       - match: 
           headers: 
             end-user: 
-              exact: "pkar"
+              exact: pkar
         split: 
           - weight: 50
             destination: 
