@@ -12,7 +12,7 @@ Where the key is the external port to use and the value indicates the service to
 
 [Ref#2](https://stackoverflow.com/questions/61430311/exposing-multiple-tcp-udp-services-using-a-single-loadbalancer-on-k8s/61461960#61461960)          
 
-- Modify existing ingress controller as below or [Setup Nginx Controller using yaml](./kube-nginx-ingress-kuma.yaml)
+- Modify existing ingress controller as below or [Setup Nginx Controller using yaml](./kuma-nginx-ingress-kuberouter.yaml)
         
 ```
 kubectl create configmap tcp-services -n kube-router
