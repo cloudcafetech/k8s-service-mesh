@@ -33,10 +33,10 @@ Edit ingress-nginx-controller deployment
 and add following in ```port``` sections
 
 ```
-        - containerPort: 5685                                                                                                     
-          hostPort: 5685                                                                                                          
-          name: kuma                                                                                                              
-          protocol: TCP 
+        - containerPort: 5685
+          hostPort: 5685 
+          name: kuma
+          protocol: TCP
 ```
 
 Edit ingress-nginx-controller service
