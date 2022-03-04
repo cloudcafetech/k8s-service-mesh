@@ -196,8 +196,6 @@ subjects:
   namespace: kube-router
 ---
 apiVersion: v1
-data:
-  allow-snippet-annotations: "true"
 kind: ConfigMap
 metadata:
   labels:
@@ -206,6 +204,8 @@ metadata:
     app.kubernetes.io/name: ingress-nginx
   name: ingress-nginx-controller
   namespace: kube-router
+data:
+  allow-snippet-annotations: "true"
 ---
 apiVersion: v1
 kind: Service
